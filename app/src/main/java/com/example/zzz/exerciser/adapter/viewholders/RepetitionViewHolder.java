@@ -1,4 +1,4 @@
-package com.example.zzz.exerciser.adapter;
+package com.example.zzz.exerciser.adapter.viewholders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,9 +10,9 @@ import com.example.zzz.exerciser.R;
 public class RepetitionViewHolder extends RecyclerView.ViewHolder {
 
 
-    protected TextView repetitionWeightView;
-    protected TextView repetitiomCountView;
-    protected CheckBox repetitionCheckbox;
+    public TextView repetitionWeightView;
+    public TextView repetitiomCountView;
+    public CheckBox repetitionCheckbox;
 
     public RepetitionViewHolder(View itemView) {
         super(itemView);

@@ -24,7 +24,7 @@ public class TrainingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trainings_layout);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.trainings_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +37,7 @@ public class TrainingsActivity extends AppCompatActivity {
         trainingAdapter = new TrainingAdapter(trainings);
 //        ListView lvMain = (ListView) findViewById(R.id.main_listview);
 //        lvMain.setAdapter(trainingAdapter);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.trainings_recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
 //        llm.setOrientation(LinearLayoutManager.VERTICAL);

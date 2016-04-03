@@ -1,4 +1,4 @@
-package com.example.zzz.exerciser.adapter;
+package com.example.zzz.exerciser.adapter.viewholders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,9 +12,9 @@ import com.example.zzz.exerciser.R;
 public class TrainingViewHolder extends RecyclerView.ViewHolder {
 
 
-    protected  TextView trainingNameView;
-    protected  TextView trainingDateView;
-    protected  TextView descriptionView;
+    public TextView trainingNameView;
+    public TextView trainingDateView;
+    public TextView descriptionView;
 
     public TrainingViewHolder(View itemView) {
         super(itemView);

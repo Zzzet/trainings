@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.zzz.exerciser.R;
+import com.example.zzz.exerciser.adapter.viewholders.TrainingViewHolder;
 import com.example.zzz.exerciser.domain.Training;
 
 import java.util.ArrayList;

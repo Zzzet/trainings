@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/exercise_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@id/exercise_description">
+    android:layout_margin="5dp"
+    card_view:cardCornerRadius="4dp">
 
-    <TextView
-        android:id="@+id/repetition_weight"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/exercise_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-        android:text="weight: 30" />
+        <TextView
+            android:id="@+id/exercise_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Some exercise" />
 
-    <TextView
-        android:id="@+id/repetition_count"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        <TextView
+            android:id="@+id/exercise_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exercise_name"
+            android:text="Exercise descripion" />
 
-        android:text="10 reps" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/exercise_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/exercise_description"
+            android:orientation="vertical" />
 
-    <CheckBox
-        android:id="@+id/repetition_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done" />
-
-</LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
