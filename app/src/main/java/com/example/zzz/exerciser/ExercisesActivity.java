@@ -28,14 +28,14 @@ public class ExercisesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         fillRepetitions();
         fillExercises();
-        setContentView(R.layout.exercises_layout);
+        setContentView(R.layout.exercise_list_layout);
 
 
         //fill exercise with repetitions
         for (int i = 0; i < 6; i++) {
             repetitionAdapter = new RepetitionAdapter(repetitions);
 
-            //Возвращает Null потому что exercise_recycler_view нет в exercises_layout
+            //Возвращает Null потому что exercise_recycler_view нет в exercise_list_layout
             RecyclerView repetitionsRecyclerView = (RecyclerView) findViewById(R.id.exercise_recycler_view);
             repetitionsRecyclerView.setHasFixedSize(true);
             LinearLayoutManager llm = new LinearLayoutManager(this);

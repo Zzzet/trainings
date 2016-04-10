@@ -22,7 +22,7 @@ public class TrainingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.trainings_layout);
+        setContentView(R.layout.training_list_layout);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.trainings_fab);
         fab.setOnClickListener(new View.OnClickListener() {
