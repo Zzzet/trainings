@@ -16,18 +16,18 @@ import java.util.ArrayList;
  */
 public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseViewHolder>  {
     ArrayList<Exercise> exercises;
-    ArrayList<RecyclerView> repetitions;
+//    ArrayList<RecyclerView> repetitions;
 
-    public ExerciseAdapter(ArrayList<Exercise> exercises,  ArrayList<RecyclerView> repetitions) {
+    public ExerciseAdapter(ArrayList<Exercise> exercises) {
         this.exercises = exercises;
-        this.repetitions = repetitions;
+//        this.repetitions = repetitions;
     }
 
     @Override
     public ExerciseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.
                 from(parent.getContext()).
-                inflate(R.layout.exercises_layout, parent, false);
+                inflate(R.layout.exercise_layout, parent, false);
 
         return new ExerciseViewHolder(itemView);
     }
@@ -36,11 +36,10 @@ public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseViewHolder>  
     @Override
     public void onBindViewHolder(ExerciseViewHolder holder, int position) {
         Exercise exercise = exercises.get(position);
-        RecyclerView repetition = repetitions.get(position);
 
         holder.exerciseNameView.setText(exercise.exerciseName);
         holder.descriptionView.setText(exercise.description);
-        holder.repetitionsView = repetition;
+
     }
 
     @Override

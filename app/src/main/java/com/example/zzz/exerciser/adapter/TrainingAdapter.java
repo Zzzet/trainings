@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.zzz.exerciser.R;
+import com.example.zzz.exerciser.TrainingsActivity;
 import com.example.zzz.exerciser.adapter.viewholders.TrainingViewHolder;
 import com.example.zzz.exerciser.domain.Training;
 
@@ -15,9 +16,11 @@ public class TrainingAdapter extends RecyclerView.Adapter<TrainingViewHolder> {
 
 
     ArrayList<Training> trainings;
+    TrainingsActivity trainingsActivity;
 
-    public TrainingAdapter(ArrayList<Training> trainings) {
+    public TrainingAdapter(ArrayList<Training> trainings, TrainingsActivity trainingsActivity) {
         this.trainings = trainings;
+        this.trainingsActivity = trainingsActivity;
 
     }
 
@@ -37,6 +40,9 @@ public class TrainingAdapter extends RecyclerView.Adapter<TrainingViewHolder> {
         holder.trainingNameView.setText(training.trainingName);
         holder.descriptionView.setText(training.description);
         holder.trainingDateView.setText(training.lastDate);
+
+        holder.setActivity(trainingsActivity);
+        holder.createOnClickListener();
     }
 
     @Override
@@ -44,6 +50,7 @@ public class TrainingAdapter extends RecyclerView.Adapter<TrainingViewHolder> {
         return trainings.size();
     }
 
+//from old, not RecyclerView adapter class
 //    @Override
 //    public int getCount() {
 //        return trainings.size();

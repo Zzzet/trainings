@@ -1,14 +1,17 @@
 package com.example.zzz.exerciser;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.zzz.exerciser.adapter.TrainingAdapter;
 import com.example.zzz.exerciser.domain.Training;
@@ -18,6 +21,13 @@ import java.util.ArrayList;
 public class TrainingsActivity extends AppCompatActivity {
     TrainingAdapter trainingAdapter;
     ArrayList<Training> trainings = new ArrayList<>();
+
+    //скорее всего есть способ лучше перехватывать нажатия на один из элементов адаптера
+    public void onTrainingClicked(TextView trainingNameView) {
+        Intent intent = new Intent(getBaseContext(), ExercisesActivity.class);
+        intent.putExtra("trainingName", trainingNameView.getText());
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +43,18 @@ public class TrainingsActivity extends AppCompatActivity {
             }
         });
 
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.trainings_toolbar);
+        setSupportActionBar(myToolbar);
+
+
         fillData();
-        trainingAdapter = new TrainingAdapter(trainings);
-//        ListView lvMain = (ListView) findViewById(R.id.main_listview);
-//        lvMain.setAdapter(trainingAdapter);
+        trainingAdapter = new TrainingAdapter(trainings, this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.trainings_recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-//        llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
         recyclerView.setAdapter(trainingAdapter);
-
 
     }
 
