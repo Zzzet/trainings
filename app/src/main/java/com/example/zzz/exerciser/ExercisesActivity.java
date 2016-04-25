@@ -22,7 +22,7 @@ public class ExercisesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.exercises_layout);
+        setContentView(R.layout.exercise_list_layout);
         createToolbar();
 
         fillExercises();
