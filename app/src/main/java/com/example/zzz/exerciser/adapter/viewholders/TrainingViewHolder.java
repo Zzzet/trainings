@@ -26,8 +26,6 @@ public class TrainingViewHolder extends RecyclerView.ViewHolder {
         trainingDateView = (TextView) itemView.findViewById(R.id.training_lastdate);
 
         relativeLayout = (RelativeLayout) itemView.findViewById(R.id.training_layout);
-
-
     }
 
     public void setActivity(TrainingsActivity activity) {
