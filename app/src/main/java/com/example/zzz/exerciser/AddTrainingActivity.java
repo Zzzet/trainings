@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.zzz.exerciser.adapter.AddExerciseAdapter;
-import com.example.zzz.exerciser.domain.Exercise;
+import com.example.zzz.exerciser.db.domain.Exercise;
 
 import java.util.ArrayList;
 

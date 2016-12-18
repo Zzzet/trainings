@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.example.zzz.exerciser.R;
 import com.example.zzz.exerciser.adapter.viewholders.AddExerciseViewHolder;
-import com.example.zzz.exerciser.domain.Exercise;
+import com.example.zzz.exerciser.db.domain.Exercise;
 
 import java.util.ArrayList;
 

@@ -5,22 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.zzz.exerciser.ExercisesActivity;
 import com.example.zzz.exerciser.R;
 import com.example.zzz.exerciser.adapter.viewholders.ExerciseViewHolder;
-import com.example.zzz.exerciser.domain.Exercise;
+import com.example.zzz.exerciser.db.domain.Exercise;
+import com.example.zzz.exerciser.db.domain.Repetition;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zzz on 4/3/16.
  */
-public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseViewHolder>  {
-    ArrayList<Exercise> exercises;
-//    ArrayList<RecyclerView> repetitions;
+public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseViewHolder> {
+    private final ArrayList<List<Repetition>> repetitionsList;
+    private List<Exercise> exercises;
 
-    public ExerciseAdapter(ArrayList<Exercise> exercises) {
+    public ExerciseAdapter(List<Exercise> exercises, ArrayList<List<Repetition>> repetitionsList) {
         this.exercises = exercises;
-//        this.repetitions = repetitions;
+        this.repetitionsList = repetitionsList;
     }
 
     @Override
@@ -36,10 +39,8 @@ public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseViewHolder>  
     @Override
     public void onBindViewHolder(ExerciseViewHolder holder, int position) {
         Exercise exercise = exercises.get(position);
-
-        holder.exerciseNameView.setText(exercise.exerciseName);
-        holder.descriptionView.setText(exercise.description);
-
+        holder.setExercise(exercise);
+        holder.setRepetitions(repetitionsList.get(position));
     }
 
     @Override

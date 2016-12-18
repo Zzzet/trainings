@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.example.zzz.exerciser.R;
 import com.example.zzz.exerciser.adapter.AddRepetitionAdapter;
-import com.example.zzz.exerciser.domain.Exercise;
-import com.example.zzz.exerciser.domain.Repetition;
+import com.example.zzz.exerciser.db.domain.Exercise;
+import com.example.zzz.exerciser.db.domain.Repetition;
 
 import java.util.ArrayList;
 
@@ -47,7 +47,7 @@ public class AddExerciseViewHolder extends RecyclerView.ViewHolder {
         addRepetitionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                repetitions.add(new Repetition("", "", true));
+                repetitions.add(new Repetition("", "", 1));
                 addRepetitionAdapter.notifyItemInserted(addRepetitionAdapter.getItemCount() + 1);
             }
         });

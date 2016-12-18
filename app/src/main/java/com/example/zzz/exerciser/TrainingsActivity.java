@@ -13,26 +13,29 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.zzz.exerciser.adapter.TrainingAdapter;
-import com.example.zzz.exerciser.domain.Training;
+import com.example.zzz.exerciser.db.MyDatabase;
+import com.example.zzz.exerciser.db.domain.Training;
+import com.example.zzz.exerciser.db.domain.tables.MyTables;
 
-import java.util.ArrayList;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class TrainingsActivity extends AppCompatActivity {
+    Logger logger = LoggerFactory.getLogger(TrainingsActivity.class);
     TrainingAdapter trainingAdapter;
-    ArrayList<Training> trainings = new ArrayList<>();
+    List<Training> trainings;
+    MyDatabase databaseHelper;
 
-    //скорее всего есть способ лучше перехватывать нажатия на один из элементов адаптера
-    public void onTrainingClicked(TextView trainingNameView) {
-        Intent intent = new Intent(getBaseContext(), ExercisesActivity.class);
-        intent.putExtra("trainingName", trainingNameView.getText());
-        startActivity(intent);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_list_layout);
-
+        databaseHelper = new MyDatabase(getApplicationContext());
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.trainings_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +52,8 @@ public class TrainingsActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
 
-        fillData();
-        trainingAdapter = new TrainingAdapter(trainings, this);
+        getData();
+        trainingAdapter = new TrainingAdapter(trainings);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.trainings_recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -59,11 +62,18 @@ public class TrainingsActivity extends AppCompatActivity {
 
     }
 
-    private void fillData() {
-        for (int i = 0; i < 30; i++) {
-            trainings.add(new Training("Training name " + i, "description " + i, "last finished " + i));
-            System.out.println("added " + i);
-        }
+    @Subscribe
+    public void onTrainingClicked(Training training){
+        Intent intent = new Intent(getBaseContext(), ExercisesActivity.class);
+        intent.putExtra("training_name", training.getName());
+        intent.putExtra("training_id", training.getId());
+        intent.putExtra("launched_training_id", training.getLaunchedTrainingId());
+        startActivity(intent);
+    }
+
+    private void getData() {
+        trainings = databaseHelper.getStartedTrainings();
+
     }
 
     @Override
@@ -85,5 +95,22 @@ public class TrainingsActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
     }
 }

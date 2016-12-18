@@ -7,18 +7,18 @@ import android.view.ViewGroup;
 
 import com.example.zzz.exerciser.R;
 import com.example.zzz.exerciser.adapter.viewholders.RepetitionViewHolder;
-import com.example.zzz.exerciser.domain.Repetition;
+import com.example.zzz.exerciser.db.domain.Repetition;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zzz on 4/2/16.
  */
 public class RepetitionAdapter extends RecyclerView.Adapter<RepetitionViewHolder> {
 
-    ArrayList<Repetition> repetitions;
+    List<Repetition> repetitions;
 
-    public RepetitionAdapter(ArrayList<Repetition> repetitions) {
+    public RepetitionAdapter(List<Repetition> repetitions) {
         this.repetitions = repetitions;
 
     }
@@ -36,9 +36,10 @@ public class RepetitionAdapter extends RecyclerView.Adapter<RepetitionViewHolder
     public void onBindViewHolder(RepetitionViewHolder holder, int position) {
         Repetition repetition = repetitions.get(position);
 
-        holder.repetitionWeightView.setText(repetition.repetitionWeight);
-        holder.repetitiomCountView.setText(repetition.repetitionCount);
-        holder.repetitionCheckbox.setActivated(repetition.repetitionCheckbox);
+        holder.repetitionWeightView.setText(repetition.weight);
+        holder.repetitiomCountView.setText(repetition.count);
+        holder.repetitionCheckbox.setActivated(repetition.getStatus());
+
     }
 
     @Override
