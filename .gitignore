@@ -7,3 +7,7 @@
 /.idea
 .project
 .classpath
+.settings/
+app/.settings/
+app/libs/
+projectFilesBackup/
